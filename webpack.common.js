@@ -4,34 +4,13 @@ const path = require('path');
 
 module.exports = {
   entry: {
-    content: './src/content.js',
+    background: './src/background.js',
+    contents: './src/contents.js',
+    popup: './src/popup.js',
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'static/js/[name].js',
-  },
-  optimization: {
-    splitChunks: {
-      chunks: 'all',
-      minSize: 20000,
-      maxSize: 70000,
-      minChunks: 1,
-      maxAsyncRequests: 30,
-      maxInitialRequests: 30,
-      automaticNameDelimiter: '~',
-      enforceSizeThreshold: 50000,
-      cacheGroups: {
-        defaultVendors: {
-          test: /[\\/]node_modules[\\/]/,
-          priority: -10,
-        },
-        default: {
-          minChunks: 2,
-          priority: -20,
-          reuseExistingChunk: true,
-        },
-      },
-    },
+    filename: 'js/[name].js',
   },
   plugins: [
     new CopyWebpackPlugin({
@@ -43,9 +22,9 @@ module.exports = {
       ],
     }),
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, 'src/templates/content.html'),
-      filename: 'content.html',
-      chunks: ['content'],
+      template: path.resolve(__dirname, 'src/templates/popup.html'),
+      filename: 'popup.html',
+      chunks: ['popup'],
     }),
   ],
 };
