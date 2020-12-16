@@ -35,6 +35,7 @@ const App = {
       const msg = { currentTab: tabs[0].id, subject: 'check' };
       chrome.runtime.sendMessage(msg, (response) => {
         if (!response) this._showStartButton();
+        else if(response === 'error') this.showError();
         else this._showStopButton();
       });
       this.origin.innerText = tabs[0].url;

@@ -3,22 +3,19 @@ import recognizeMicrophone from 'watson-speech/speech-to-text/recognize-micropho
 import { fetch } from 'whatwg-fetch';
 
 export const getToken = async () => {
-  const data = await fetch('/token.json');
+  // const data = await fetch('/token.json');
+  const data = await fetch('https://whatsaid.mybluemix.net/api/stt');
   const token = await data.json()
   return token;
 }
 
-const playAudio = (stream) => {
-  const liveStream = stream;
+export const playAudio = (stream) => {
   const audio = new Audio();
-  audio.srcObject = liveStream;
+  audio.srcObject = stream;
   audio.play();
 }
 export const Transcribe = {
-  async start (option, callback = null) {
-    const { play, stream } = option;
-    if (play) playAudio(stream);
-
+  async start (stream, callback = null) {
     const token = await getToken();
     const streams = recognizeMicrophone(Object.assign(token, {
       mediaStream: stream,

@@ -1,4 +1,4 @@
-import { Transcribe } from "./scripts/speech-to-text";
+import { playAudio, Transcribe } from "./scripts/speech-to-text";
 
 class Capture {
   constructor(request, sendResponse) {
@@ -29,13 +29,16 @@ class Capture {
       const currentTab = tabs[0].id;
       sessionStorage.removeItem(currentTab);
       Transcribe.stop();
+      const port = chrome.tabs.connect(currentTab, { name: 'removeTransrcibe' });
+      port.postMessage({ status: 'remove' });
       this._sendResponse(true);
     })
   }
 
   _sendStream(currentTab) {
     chrome.tabCapture.capture({ audio: true }, (stream) => {
-      Transcribe.start({ play: false, stream }, (script) => {
+      playAudio(stream);
+      Transcribe.start(stream, (script) => {
         const port = chrome.tabs.connect(currentTab, { name: 'transcribe' });
         script.on('data', (data) => {
           port.postMessage({status: 'ok', data});

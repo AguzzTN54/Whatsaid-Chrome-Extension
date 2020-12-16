@@ -8,8 +8,7 @@ export const createSubtitleTpl = (content) => `<!DOCTYPE html>
       overflow: hidden;
       display: flex;
       margin:0;
-      font-size:larger;
-      line-height: 1.5rem;
+      font-size: x-large;
       pointer-events: none;
     }
     .text {
