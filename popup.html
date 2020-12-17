@@ -1,0 +1,166 @@
+<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Whatsaid - What is Said</title><style>* {
+        box-sizing: border-box;
+        margin:0;
+        padding: 0;
+      }
+
+      body {
+        width: 300px;
+        /* height: 200px; */
+        border-radius: 10px;
+      }
+      header {
+        border-bottom: 1px solid #ccc;
+        padding: 0 2%;
+        justify-content: space-between;
+      }
+      header, .brand {
+        display: flex;
+        align-items: center;
+      }
+      .brand {
+        justify-content: center;
+        flex-basis: 50%;
+        padding: 5px;
+        font-weight: bold;
+      }
+      h1 {
+        font-size: .8rem;
+      }
+      .brand > img {
+        width: 30px;
+        height: 30px;
+        margin-right: 5px;
+      }
+      .container {
+        padding: 10px;
+        margin: 0;
+        text-align: center;
+      }
+
+
+      button {
+        border: 0;
+        outline: 0;
+        padding: 15px;
+        font-size: 1rem;
+        color: #fff;;
+      }
+
+      .control-buttons {
+        cursor: pointer;
+        width: 90px;
+        height: 80px;
+        display: flex;
+        margin:auto;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .control-buttons .center-switch {
+        position: relative;
+        width: 74px;
+        height: 26px;
+        border-radius: 100px;
+        background-color: #7ba8b9;
+        box-shadow: inset 0 1px 3px 0 rgba(0, 0, 0, 0.28);
+      }
+
+      .control-buttons .switch-btn {
+          position: absolute;
+          width: 48px;
+          height: 48px;
+          top: -14px;
+          left: 0;
+          border-radius: 50%;
+          /* box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.7); */
+          background-image: linear-gradient(to bottom, #ffffff, #ebebeb);
+          padding: 4px;
+          cursor: pointer;
+          transition: 0.3s ease all;
+      }
+
+      .tab-main.active .control-buttons .switch-btn {
+        right: 0;
+        left: unset;
+      }
+
+      .switch-btn:before {
+        background-image: linear-gradient(to bottom, #485d61, #5c6369);
+      }
+      .tab-main.active .switch-btn:before {
+          background-image: linear-gradient(to bottom, #3fadc3, #115ea0);
+      }
+
+      .control-buttons .switch-btn:before {
+          content: '';
+          display: block;
+          width: 100%;
+          height: 100%;
+          border-radius: 50%;
+      }
+
+      .control-buttons .switch-btn:after {
+          content: '';
+          width: 44px;
+          height: 44px;
+          display: block;
+          position: absolute;
+          left: 3px;
+          top: 3px;
+          background-repeat: no-repeat;
+          background-position: 50% 50%;
+      }
+      .tab-main {
+        height: 180px;
+        color:#fff;
+        transition: all .5s;
+        background-image: radial-gradient(circle at 50% 54%, #718184, #3b4d5d);
+      }
+      .tab-main.active {
+          background-image: radial-gradient(circle at 50% 54%, #25afcc, #1f6298);
+      }
+      a {
+        text-decoration: none;
+        color: #25afcc;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+
+      #origin {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+      }
+
+      footer {
+        padding: 10px;
+        text-align: center;
+        font-size: smaller;
+      }
+      footer >i {
+        color: rgb(207, 0, 52);
+        font-style: normal;
+      }
+
+      .dot::after {
+        content: '';
+        display: inline-block;
+        animation: dotload linear infinite 3s;
+      }
+      @keyframes dotload {
+        0% {
+          content: '';
+        }
+        50% {
+          content: '.';
+        }
+        75% {
+          content: '..';
+        }
+        100% {
+          content: '...';
+        }
+      }</style></head><body><header><div class="brand"><img src="icon/icon-120x120.png" alt="Brand"><h1>WHATSAID</h1></div></header><section class="container tab-main" id="main-tab"><div id="online-status">Connecting <span class="dot"></span></div><h2 id="status">Transcribe Now</h2><div class="control-buttons"><div class="center-switch"><button id="toggle" class="switch-btn"></button></div></div><h3 id="origin"></h3></section><footer>Made with <i>❤</i> by <a href="#">AguzzTN54</a></footer><script src="js/popup.js"></script></body></html>
